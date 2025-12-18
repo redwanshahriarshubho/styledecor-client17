@@ -1,0 +1,97 @@
+/* ===========================================================
+   Google Font
+   =========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ===========================================================
+   Tailwind Directives
+   =========================================================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================================
+   Global Styles
+   =========================================================== */
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff; /* default background */
+  color: #1f2937; /* default text color */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a,
+button {
+  transition: all 0.3s ease;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #f43f5e; /* Tailwind primary color */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  user-select: none;
+}
+
+/* ===========================================================
+   Scrollbar Styles
+   =========================================================== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f43f5e;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e11d48;
+}
+
+/* ===========================================================
+   Map / Leaflet container
+   =========================================================== */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* ===========================================================
+   DaisyUI Overrides / Custom Utilities (Optional)
+   =========================================================== */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.bg-primary {
+  background-color: theme('colors.primary.500');
+}
+
+.text-primary {
+  color: theme('colors.primary.500');
+}
