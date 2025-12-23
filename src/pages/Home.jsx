@@ -1,24 +1,31 @@
-import { Helmet } from 'react-helmet-async';
-import HeroSection from '../components/home/HeroSection';
-import ServicesSection from '../components/home/ServicesSection';
-import TopDecoratorsSection from '../components/home/TopDecoratorsSection';
-import CoverageMapSection from '../components/home/CoverageMapSection';
+import { useEffect, useState } from "react";
+import apiClient from "../api/apiClient";
 
-const Home = () => {
+export default function Home() {
+  const [services, setServices] = useState([]);
+  const [decorators, setDecorators] = useState([]);
+
+  useEffect(() => {
+    apiClient.get("/api/services?limit=6").then(res => {
+      setServices(res.data.services || []);
+    });
+
+    apiClient.get("/api/decorators/top?limit=6").then(res => {
+      setDecorators(res.data || []);
+    });
+  }, []);
+
   return (
-    <>
-      <Helmet>
-        <title>Home - StyleDecor | Professional Decoration Services</title>
-      </Helmet>
-      
-      <div>
-        <HeroSection />
-        <ServicesSection />
-        <TopDecoratorsSection />
-        <CoverageMapSection />
-      </div>
-    </>
-  );
-};
+    <div>
+      <h1>Top Services</h1>
+      {services.map(s => (
+        <p key={s._id}>{s.name}</p>
+      ))}
 
-export default Home;
+      <h1>Top Decorators</h1>
+      {decorators.map(d => (
+        <p key={d._id}>{d.name}</p>
+      ))}
+    </div>
+  );
+}
